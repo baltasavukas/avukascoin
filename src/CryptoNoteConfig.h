@@ -74,7 +74,8 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 
 //TODO Put here the name of your currency
 const char     CRYPTONOTE_NAME[]                             = "Avukas";
-const char GENESIS_COINBASE_TX_HEX[] = "011401ff0001ffffffffffff07029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210162ee6993dc24ea518a685e8661de6186567b34f894377aafffa3ed6c600cb470";
+//const char GENESIS_COINBASE_TX_HEX[] = "";
+const char GENESIS_COINBASE_TX_HEX[] = "011401ff000194b574029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101041e9c59d274783e39aa92dd1ef5eede8dc5f6ed303a345820bc4825c53e1777";
 
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
