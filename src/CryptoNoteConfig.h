@@ -24,7 +24,7 @@ const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 60;
 //TODO Specify total number of available coins
 //TODO ((uint64_t)(-1)) equals to 18446744073709551616 coins
 //TODO or you can define number explicitly UINT64_C(858986905600000000)
-const uint64_t MONEY_SUPPLY                                  = UINT64_C(10000000000);
+const uint64_t MONEY_SUPPLY                                  = ((uint64_t)(-1));
 const unsigned EMISSION_SPEED_FACTOR                         = 19;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
@@ -74,20 +74,21 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 
 //TODO Put here the name of your currency
 const char     CRYPTONOTE_NAME[]                             = "Avukas";
-const char GENESIS_COINBASE_TX_HEX[] = "011401ff0001819501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210124e19151be8f7fd2e56d1f4576d61a4a375b0d9a206b5520b01a22e3f3345edb";
+//const char GENESIS_COINBASE_TX_HEX[] = "011401ff0001819501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210124e19151be8f7fd2e56d1f4576d61a4a375b0d9a206b5520b01a22e3f3345edb";
+const char GENESIS_COINBASE_TX_HEX[] = "";
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
 const uint8_t  BLOCK_MAJOR_VERSION_1                         =  1;
 const uint8_t  BLOCK_MINOR_VERSION_0                         =  0;
 
-const size_t   BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT        =  10000;  //by default, blocks ids count in synchronizing
-const size_t   BLOCKS_SYNCHRONIZING_DEFAULT_COUNT            =  200;    //by default, blocks count in blocks downloading
-const size_t   COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT         =  1000;
+const size_t   BLOCKS_IDS_SYNCHRONIZING_DEFAULT_COUNT        =  1000;  //by default, blocks ids count in synchronizing
+const size_t   BLOCKS_SYNCHRONIZING_DEFAULT_COUNT            =  20;    //by default, blocks count in blocks downloading
+const size_t   COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT         =  10;
 
 //TODO This port will be used by the daemon to establish connections with p2p network
-const int      P2P_DEFAULT_PORT                              = 18181;
-//TODO This port will be used by the daemon to interact with simlewallet
-const int      RPC_DEFAULT_PORT                              = 18180;
+const int      P2P_DEFAULT_PORT                              = 18331;
+//TODO This port will be used by the daemon to interact with simplewallet
+const int      RPC_DEFAULT_PORT                              = 18330;
 
 const size_t   P2P_LOCAL_WHITE_PEERLIST_LIMIT                =  1000;
 const size_t   P2P_LOCAL_GRAY_PEERLIST_LIMIT                 =  5000;
@@ -96,7 +97,7 @@ const size_t   P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE          = 16 * 1024 * 1024;
 const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT                 = 8;
 const size_t   P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT     = 70;
 const uint32_t P2P_DEFAULT_HANDSHAKE_INTERVAL                = 60;            // seconds
-const uint32_t P2P_DEFAULT_PACKET_MAX_SIZE                   = 50000000;      // 50000000 bytes maximum packet size
+const uint32_t P2P_DEFAULT_PACKET_MAX_SIZE                   = 5000000;      // 50000000 bytes maximum packet size
 const uint32_t P2P_DEFAULT_PEERS_IN_HANDSHAKE                = 250;
 const uint32_t P2P_DEFAULT_CONNECTION_TIMEOUT                = 5000;          // 5 seconds
 const uint32_t P2P_DEFAULT_PING_CONNECTION_TIMEOUT           = 2000;          // 2 seconds
@@ -107,8 +108,8 @@ const char     P2P_STAT_TRUSTED_PUB_KEY[]                    = "8f80f9a5a434a9f1
 //TODO Add here your network seed nodes
 const std::initializer_list<const char*> SEED_NODES = {
   //"your_seed_ip1.com:8080",
-  "10.250.0.2:18181",
-  "10.250.0.22:18181",
+  "10.250.0.21:18331",
+  "10.250.0.22:18331",
   //"your_seed_ip2.com:8080",
 };
 
