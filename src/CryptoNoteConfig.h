@@ -24,7 +24,7 @@ const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW             = 60;
 //TODO Specify total number of available coins
 //TODO ((uint64_t)(-1)) equals to 18446744073709551616 coins
 //TODO or you can define number explicitly UINT64_C(858986905600000000)
-const uint64_t MONEY_SUPPLY                                  = ((uint64_t)(-1));
+const uint64_t MONEY_SUPPLY                                  = UINT64_C(1000000000000);
 const unsigned EMISSION_SPEED_FACTOR                         = 19;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
@@ -74,8 +74,8 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 
 //TODO Put here the name of your currency
 const char     CRYPTONOTE_NAME[]                             = "Avukas";
-//const char GENESIS_COINBASE_TX_HEX[] = "011401ff0001819501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210124e19151be8f7fd2e56d1f4576d61a4a375b0d9a206b5520b01a22e3f3345edb";
-const char GENESIS_COINBASE_TX_HEX[] = "";
+const char GENESIS_COINBASE_TX_HEX[] = "011401ff0001ffffffffffff07029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210162ee6993dc24ea518a685e8661de6186567b34f894377aafffa3ed6c600cb470";
+
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
 const uint8_t  BLOCK_MAJOR_VERSION_1                         =  1;
