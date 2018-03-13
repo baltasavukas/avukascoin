@@ -29,7 +29,7 @@ const uint64_t MONEY_SUPPLY = (uint64_t)(-1);
 ```
 or
 ```
-const uint64_t MONEY_SUPPLY = UINT64_C(1 000 000 000 000);
+const uint64_t MONEY_SUPPLY = UINT64_C(1000000000000);
 ```
 
 **2. Emission curve** (src/CryptoNoteConfig.h)
@@ -53,7 +53,6 @@ Difficulty target directly influences several aspects of coin's behavior:
 
 For most coins difficulty target is 60 or 120 seconds.
 
-Example:
 ```
 const uint64_t DIFFICULTY_TARGET = 120;
 ```
@@ -86,10 +85,9 @@ It's better to choose ports that aren't used by other software or coins. See kno
 * http://www.networksorcery.com/enp/protocol/ip/ports00000.htm
 * http://keir.net/portlist.html
 
-Example:
 ```
-const int P2P_DEFAULT_PORT = 17236;
-const int RPC_DEFAULT_PORT = 18236;
+const int P2P_DEFAULT_PORT = 18831;
+const int RPC_DEFAULT_PORT = 18230;
 ```
 
 
@@ -120,7 +118,6 @@ const std::initializer_list<const char*> SEED_NODES = {
 
 Zero minimum fee can lead to transaction flooding. Transactions cheaper than the minimum transaction fee wouldn't be accepted by daemons. 100000 value for `MINIMUM_FEE` is usually enough.
 
-Example:
 ```
 const uint64_t MINIMUM_FEE = 100000;
 ```
@@ -130,7 +127,6 @@ const uint64_t MINIMUM_FEE = 100000;
 
 CryptoNote protects chain from tx flooding by reducing block reward for blocks larger than the median block size. However, this rule applies for blocks larger than `CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE` bytes.
 
-Example:
 ```
 const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE = 20000;
 ```
@@ -142,7 +138,7 @@ You may choose a letter (in some cases several letters) all the coin's public ad
 
 Example:
 ```
-const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0xe9; // addresses start with "f"
+const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x3f2cca; // addresses start with "avu"
 ```
 
 
@@ -162,9 +158,8 @@ const char GENESIS_COINBASE_TX_HEX[] = "";
 
 Run your daemon with `--print-genesis-tx` argument. It will print out the genesis block coinbase transaction hash.
 
-Example:
 ```
-furiouscoind --print-genesis-tx
+avukascoind --print-genesis-tx
 ```
 
 
@@ -187,16 +182,40 @@ Recompile everything again. Your coin code is ready now. Make an announcement fo
 
 ### On *nix
 
-Dependencies: GCC 4.7.3 or later, CMake 2.8.6 or later, and Boost 1.55.
+```
+sudo apt update
+sudo apt -y upgrade
 
-You may download them from:
+sudo apt -y install build-essential pkg-config libssl-dev libzmq3-dev libunbound-dev libsodium-dev
+sudo apt -y install libminiupnpc-dev libunwind8-dev liblzma-dev libreadline6-dev libldns-dev libexpat1-dev doxygen graphviz
+sudo apt -y install libboost-all-dev 
 
-* http://gcc.gnu.org/
-* http://www.cmake.org/
-* http://www.boost.org/
-* Alternatively, it may be possible to install them using a package manager.
+cd ~ && git clone https://github.com/baltasavukas/avukascoin.git avukas
+cd avukas
+make -j
+```
 
-To build, change to a directory where this file is located, and run `make`. The resulting executables can be found in `build/release/src`.
+
+**Speciffic package versions**
+```
+mkdir ~/temp && cd ~/temp
+wget https://cmake.org/files/v3.10/cmake-3.10.2.tar.gz
+tar -xf cmake-3.10.2.tar.gz
+cd cmake-3.10.2 && ./bootstrap
+sudo make -j
+sudo make install
+cd ~/temp
+wget http://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.gz
+tar -xf boost_1_58_0.tar.gz
+cd boost_1_58_0 && ./bootstrap.sh
+./b2
+sudo ./bjam install
+cd ~ && rm -rf temp
+
+sudo apt-get -y install libgtest-dev 
+cd /usr/src/gtest && sudo cmake . 
+sudo make && sudo mv libg* /usr/lib/
+```
 
 **Advanced options:**
 
@@ -205,19 +224,3 @@ To build, change to a directory where this file is located, and run `make`. The 
 * Test suite: run `make test-release` to run tests in addition to building. Running `make test-debug` will do the same to the debug version.
 * Building with Clang: it may be possible to use Clang instead of GCC, but this may not work everywhere. To build, run `export CC=clang CXX=clang++` before running `make`.
 
-### On Windows
-Dependencies: MSVC 2013 or later, CMake 2.8.6 or later, and Boost 1.55. You may download them from:
-
-* http://www.microsoft.com/
-* http://www.cmake.org/
-* http://www.boost.org/
-
-To build, change to a directory where this file is located, and run theas commands: 
-```
-mkdir build
-cd build
-cmake -G "Visual Studio 12 Win64" ..
-```
-
-And then do Build.
-Good luck!
