@@ -182,7 +182,7 @@ Recompile everything again. Your coin code is ready now. Make an announcement fo
 
 ### On *nix
 
-Be sure your account is a sudoer with no password requirement
+Be sure your account is a sudoer with no password requirement.
 Add line to /etc/sudoers: user ALL=(ALL) NOPASSWD:ALL
 
 Clone repository, install dependencies and build coin
