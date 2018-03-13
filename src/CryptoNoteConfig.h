@@ -74,8 +74,7 @@ const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json"
 
 //TODO Put here the name of your currency
 const char     CRYPTONOTE_NAME[]                             = "Avukas";
-//const char GENESIS_COINBASE_TX_HEX[] = "";
-const char GENESIS_COINBASE_TX_HEX[] = "011401ff000194b574029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101041e9c59d274783e39aa92dd1ef5eede8dc5f6ed303a345820bc4825c53e1777";
+const char GENESIS_COINBASE_TX_HEX[]                         = "011401ff000194b574029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101041e9c59d274783e39aa92dd1ef5eede8dc5f6ed303a345820bc4825c53e1777";
 
 
 const uint8_t  CURRENT_TRANSACTION_VERSION                   =  1;
@@ -94,7 +93,7 @@ const int      RPC_DEFAULT_PORT                              = 18330;
 const size_t   P2P_LOCAL_WHITE_PEERLIST_LIMIT                =  1000;
 const size_t   P2P_LOCAL_GRAY_PEERLIST_LIMIT                 =  5000;
 
-const size_t   P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE          = 16 * 1024 * 1024; // 16 MB
+const size_t   P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE          = 64 * 1024 * 1024; // 16 MB
 const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT                 = 8;
 const size_t   P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT     = 70;
 const uint32_t P2P_DEFAULT_HANDSHAKE_INTERVAL                = 60;            // seconds

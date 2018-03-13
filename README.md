@@ -1,16 +1,5 @@
-This is the reference code for [CryptoNote](https://cryptonote.org) cryptocurrency protocol.
+This code is taken from the reference code for [CryptoNote](https://cryptonote.org) cryptocurrency protocol.
 
-* Launch your own CryptoNote currency: [CryptoNote Starter](https://cryptonotestarter.org/)
-* CryptoNote reference implementation: [CryptoNoteCoin](https://cryptonote-coin.org)
-* Discussion board and support: [CryptoNote Forum](https://forum.cryptonote.org)
-
-## CryptoNote forking how-to
-
-### Preparation
-
-1. Create an account on [GitHub.com](github.com)
-2. Fork [CryptoNote repository](https://github.com/cryptonotefoundation/cryptonote)
-3. Buy one or two Ubuntu-based dedicated servers (at least 2Gb of RAM) for seed nodes.
 
 
 
@@ -20,21 +9,14 @@ This is the reference code for [CryptoNote](https://cryptonote.org) cryptocurren
 
 Name must be specified twice:
 
-**1. in file src/CryptoNoteConfig.h** - `CRYPTONOTE_NAME` constant
-
-Example: 
+**1. in file src/CryptoNoteConfig.h**
 ```
-const char CRYPTONOTE_NAME[] = "furiouscoin";
-```
+const char CRYPTONOTE_NAME[] = "avukas";
 
 **2. in src/CMakeList.txt file** - set_property(TARGET daemon PROPERTY OUTPUT_NAME "YOURCOINNAME**d**")
-
-Example: 
 ```
-set_property(TARGET daemon PROPERTY OUTPUT_NAME "furiouscoind")
+set_property(TARGET daemon PROPERTY OUTPUT_NAME "avukascoind")
 ```
-
-**Note:** You should also change a repository name.
 
 
 ### Second step. Emission logic 
@@ -42,10 +24,12 @@ set_property(TARGET daemon PROPERTY OUTPUT_NAME "furiouscoind")
 **1. Total money supply** (src/CryptoNoteConfig.h)
 
 Total amount of coins to be emitted. Most of CryptoNote based coins use `(uint64_t)(-1)` (equals to 18446744073709551616). You can define number explicitly (for example `UINT64_C(858986905600000000)`).
-
-Example:
 ```
 const uint64_t MONEY_SUPPLY = (uint64_t)(-1);
+```
+or
+```
+const uint64_t MONEY_SUPPLY = UINT64_C(1 000 000 000 000);
 ```
 
 **2. Emission curve** (src/CryptoNoteConfig.h)
@@ -53,8 +37,6 @@ const uint64_t MONEY_SUPPLY = (uint64_t)(-1);
 Be default CryptoNote provides emission formula with slight decrease of block reward with each block. This is different from Bitcoin where block reward halves every 4 years.
 
 `EMISSION_SPEED_FACTOR` constant defines emission curve slope. This parameter is required to calulate block reward. 
-
-Example:
 ```
 const unsigned EMISSION_SPEED_FACTOR = 18;
 ```
