@@ -2,8 +2,7 @@ This code is taken from the reference code for [CryptoNote](https://cryptonote.o
 
 
 
-
-### First step. Give a name to your coin
+### First step. Name 	the coin
 
 **Good name must be unique.** Check uniqueness with [google](http://google.com) and [Map of Coins](mapofcoins.com) or any other similar service.
 
@@ -12,6 +11,7 @@ Name must be specified twice:
 **1. in file src/CryptoNoteConfig.h**
 ```
 const char CRYPTONOTE_NAME[] = "avukas";
+```
 
 **2. in src/CMakeList.txt file** - set_property(TARGET daemon PROPERTY OUTPUT_NAME "YOURCOINNAME**d**")
 ```
